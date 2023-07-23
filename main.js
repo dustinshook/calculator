@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     display.classList.add('display');
     calc_container.appendChild(display);
 
-    const buttons = [7, 8, 9, '*', 4, 5, 6, '-', 1, 2, 3, '+', 0, '.', '/', 'C'];
+    const buttons = [7, 8, 9, '*', 4, 5, 6, '-', 1, 2, 3, '+', 0, '.', '/', '='];
+    const buttons2 = []
 
     buttons.forEach(operator => {
         const calc_button = document.createElement('div');
