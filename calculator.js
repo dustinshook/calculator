@@ -1,5 +1,6 @@
 class Calculator {
-    constructor() {
+    constructor(config) {
+        this.config = config;
         this.container = document.getElementById('calculator');
         this.currentOperation = null;
         this.buttonMap = {
@@ -49,12 +50,17 @@ class Calculator {
     }
 
     renderButtons() {
-        const buttons = ['C', 'pn', 'pct', 'CE', '7', '8', '9', '*', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '/', '='];
+        const buttons = [
+            'C', 'pn', 'pct', 'CE', '7', '8', '9', '*', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '/', '='
+        ];
+
+        console.log(this.config.buttons);
 
         buttons.forEach(operator => {
             const calc_button = document.createElement('div');
             calc_button.classList.add('calc-button');
             calc_button.dataset.operator = operator;
+            
 
             if (this.buttonMap[operator]) {
                 calc_button.innerHTML = this.buttonMap[operator].innerHTML;
@@ -136,13 +142,23 @@ class Calculator {
             } else if (value === 'pct') {
                 this.percent();
             } else {
-                this.display.textContent += value;
+                if (typeof this.currentOperation === 'function') {
+                    this.display.textContent = value;
+                } else {
+                    this.display.textContent += value;
+                }
             }
             
         } else {
             if (typeof this.currentOperation === 'function') {
                 this.display.textContent = this.currentOperation(parseFloat(this.display.textContent));
-                this.currentOperation = this.operate(value, parseFloat(this.display.textContent));
+
+                if (value === '=') {
+                    this.currentOperation = null;
+                } else {
+                    this.currentOperation = this.operate(value, parseFloat(this.display.textContent));
+                }
+
             } else {
                 this.currentOperation = this.operate(value, parseFloat(this.display.textContent));
                 this.display.textContent = '';

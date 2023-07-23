@@ -1,0 +1,167 @@
+{
+    "buttons": [
+        {
+            "label": "C",
+            "value": "C",
+            "name": "clear",
+            "type": "operator",
+            "icon": false,
+            "class": null
+        },
+        {
+            "label": "+/-",
+            "value": "pn",
+            "name": "plusminus",
+            "type": "operator",
+            "icon": true,
+            "class": "fas fa-plus-minus"
+        },
+        {
+            "label": "%",
+            "value": "pct",
+            "name": "percent",
+            "type": "operator",
+            "icon": true,
+            "class": "fas fa-percent"
+        },
+        {
+            "label": "CE",
+            "value": "CE",
+            "name": "backspace",
+            "type": "operator",
+            "icon": true,
+            "class": "fas fa-backspace"
+        },
+        {
+            "label": "7",
+            "value": "7",
+            "name": "seven",
+            "type": "number",
+            "icon": false,
+            "class": null
+        },
+        {
+            "label": "8",
+            "value": "8",
+            "name": "eight",
+            "type": "number",
+            "icon": false,
+            "class": null
+        },
+        {
+            "label": "9",
+            "value": "9",
+            "name": "nine",
+            "type": "number",
+            "icon": false,
+            "class": null
+        },
+        {
+            "label": "x",
+            "value": "*",
+            "name": "multiply",
+            "type": "operator",
+            "icon": true,
+            "class": "fas fa-xmark"
+        },
+        {
+            "label": "4",
+            "value": "4",
+            "name": "four",
+            "type": "number",
+            "icon": false,
+            "class": null
+        },
+        {
+            "label": "5",
+            "value": "5",
+            "name": "five",
+            "type": "number",
+            "icon": false,
+            "class": null
+        },
+        {
+            "label": "6",
+            "value": "6",
+            "name": "six",
+            "type": "number",
+            "icon": false,
+            "class": null
+        },
+        {
+            "label": "-",
+            "value": "-",
+            "name": "subtract",
+            "type": "operator",
+            "icon": true,
+            "class": "fas fa-minus"
+        },
+        {
+            "label": "1",
+            "value": "1",
+            "name": "one",
+            "type": "number",
+            "icon": false,
+            "class": null
+        },
+        {
+            "label": "2",
+            "value": "2",
+            "name": "two",
+            "type": "number",
+            "icon": false,
+            "class": null
+        },
+        {
+            "label": "3",
+            "value": "3",
+            "name": "three",
+            "type": "number",
+            "icon": false,
+            "class": null
+        },
+        {
+            "label": "+",
+            "value": "+",
+            "name": "add",
+            "type": "operator",
+            "icon": true,
+            "class": "fas fa-plus"
+        },
+        {
+            "label": "0",
+            "value": "0",
+            "name": "zero",
+            "type": "number",
+            "icon": false,
+            "class": null
+        },
+        {
+            "label": ".",
+            "value": ".",
+            "name": "decimal",
+            "type": "number",
+            "icon": false,
+            "class": null
+        },
+        {
+            "label": "/",
+            "value": "/",
+            "name": "divide",
+            "type": "operator",
+            "icon": true,
+            "class": "fas fa-divide"
+        },
+        {
+            "label": "=",
+            "value": "=",
+            "name": "equals",
+            "type": "operator",
+            "icon": true,
+            "class": "fas fa-equals"
+        }
+
+
+    ],
+    "name": "calculator"
+}
