@@ -30,11 +30,24 @@ body {
     margin-top: 5em;
 }
 
+.display {
+    grid-column: 1 / -1;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
 .calc-button {
     width: 100%;
     height: 100%;
-    border: none;
-    outline: none;
+    border: 1px solid #f2f2f2;
     font-size: 2rem;
     border-radius: 10px;
     cursor: pointer;
@@ -43,8 +56,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none;
 }
 
 .calc-button:hover {
     background: #f2f2f2;
+}
+
+.calc-button:active {
+    background: #e6e6e6;
 }

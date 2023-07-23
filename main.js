@@ -2,20 +2,21 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const calc_container = document.getElementById('calculator');
+    const display = document.createElement('div');
+    display.classList.add('display');
+    calc_container.appendChild(display);
 
-    for (let i = 9; i >= 0; i--) {
-        const calc_button = document.createElement('div');
-        calc_button.classList.add('calc-button');
-        calc_button.textContent = i;
-        calc_container.appendChild(calc_button);
-    }
+    const buttons = [7, 8, 9, '*', 4, 5, 6, '-', 1, 2, 3, '+', 0, '.', '/', 'C'];
 
-    const operators = ['.', '+', '-', '*', '/', '='];
-
-    operators.forEach(operator => {
+    buttons.forEach(operator => {
         const calc_button = document.createElement('div');
         calc_button.classList.add('calc-button');
         calc_button.textContent = operator;
         calc_container.appendChild(calc_button);
+
+        calc_button.addEventListener('click', () => {
+            display.textContent += operator;
+        });
     });
+
 });
