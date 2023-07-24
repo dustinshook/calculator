@@ -3,41 +3,6 @@ class Calculator {
         this.config = config;
         this.container = document.getElementById('calculator');
         this.currentOperation = null;
-        this.buttonMap = {
-            'pct': {
-                'innerHTML': '<i class="fas fa-percent"></i>',
-                'id': 'calc-percent'
-            },
-            'pn': {
-                'innerHTML': '<i class="fas fa-plus-minus"></i>',
-                'id': 'calc-plus-minus'
-            },
-            'CE': {
-                'innerHTML': '<i class="fas fa-backspace"></i>',
-                'id': 'calc-backspace'
-            },
-            
-            '*': {
-                'innerHTML': '<i class="fas fa-xmark"></i>',
-                'id': 'calc-multiply'
-            },
-            '-': {
-                'innerHTML': '<i class="fas fa-minus"></i>',
-                'id': 'calc-subtract'
-            },
-            '+': {
-                'innerHTML': '<i class="fas fa-plus"></i>',
-                'id': 'calc-add'
-            },
-            '/': {
-                'innerHTML': '<i class="fas fa-divide"></i>',
-                'id': 'calc-divide'
-            },
-            '=': {
-                'innerHTML': '<i class="fas fa-equals"></i>',
-                'id': 'calc-equals'
-            }
-        };
     }
 
     renderDisplay() {
@@ -50,28 +15,25 @@ class Calculator {
     }
 
     renderButtons() {
-        const buttons = [
-            'C', 'pn', 'pct', 'CE', '7', '8', '9', '*', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '/', '='
-        ];
-
-        console.log(this.config.buttons);
-
-        buttons.forEach(operator => {
+        this.config.buttons.forEach(button => {
             const calc_button = document.createElement('div');
             calc_button.classList.add('calc-button');
-            calc_button.dataset.operator = operator;
+            calc_button.dataset.operator = button.value;
             
-
-            if (this.buttonMap[operator]) {
-                calc_button.innerHTML = this.buttonMap[operator].innerHTML;
-                calc_button.id = this.buttonMap[operator].id;
+            if (button.icon) {
+                const icon = document.createElement('i');
+                icon.classList = button.class;
+                calc_button.appendChild(icon);
             } else {
-                calc_button.textContent = operator;
+                calc_button.textContent = button.value;
             }
         
             calc_button.addEventListener('click', (event) => {
-                const target = event.target.closest('.calc-button');
-                this.buttonClick(target);
+                if (button.function) {
+                    this[button.function]();
+                } else {
+                    this.buttonClick(event.target.closest('.calc-button'));
+                }
             });
 
             this.container.appendChild(calc_button);
@@ -133,21 +95,8 @@ class Calculator {
 
     updateDisplay(value) {
         if (!['+', '-', '*', '/', '='].includes(value)) {
-            if (value === 'C') {
-                this.clear();
-            } else if (value === 'CE') {
-                this.backspace();
-            } else if (value === 'pn') {
-                this.posNeg();
-            } else if (value === 'pct') {
-                this.percent();
-            } else {
-                if (typeof this.currentOperation === 'function') {
-                    this.display.textContent = value;
-                } else {
-                    this.display.textContent += value;
-                }
-            }
+
+            this.display.textContent = typeof this.currentOperation === 'function' ? value : this.display.textContent += value;
             
         } else {
             if (typeof this.currentOperation === 'function') {
