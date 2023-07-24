@@ -69,3 +69,26 @@ body {
 .calc-button:active {
     background: #00C896;
 }
+
+@media screen and (max-width: 500px) {
+    /* full screen calculator on mobile */
+
+    .page-content {
+        height: 100%;
+    }
+
+    .calculator-wrapper {
+        width: 100%;
+        height: 100%;
+        margin-top: 0;
+        border-radius: 0;
+    }
+
+    .display {
+        font-size: 3rem;
+        min-height: 105px
+    }
+
+
+
+}
