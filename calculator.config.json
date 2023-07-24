@@ -1,14 +1,54 @@
 {
     "buttons": [
         {
+            "label": "source",
+            "value": "source",
+            "name": "source code",
+            "type": "spec",
+            "icon": true,
+            "class": "fa-brands fa-github",
+            "function": "false",
+            "keycode": ""
+        },
+        {
             "label": "C",
             "value": "C",
             "name": "clear",
-            "type": "operator",
+            "type": "spec",
             "icon": false,
             "class": null,
             "function": "clear",
             "keycode": "Delete"
+        },
+        {
+            "label": "CE",
+            "value": "CE",
+            "name": "clear entry",
+            "type": "spec",
+            "icon": false,
+            "class": null,
+            "function": false,
+            "keycode": "Escape"
+        },
+        {
+            "label": "backspace",
+            "value": "bksp",
+            "name": "backspace",
+            "type": "spec",
+            "icon": true,
+            "class": "fas fa-backspace",
+            "function": "backspace",
+            "keycode": "Backspace"
+        },
+        {
+            "label": "sqrt",
+            "value": "sqrt",
+            "name": "squareroot",
+            "type": "spec",
+            "icon": true,
+            "class": "fas fa-square-root-variable",
+            "function": false,
+            "keycode": ""
         },
         {
             "label": "+/-",
@@ -32,15 +72,14 @@
 
         },
         {
-            "label": "CE",
-            "value": "CE",
-            "name": "backspace",
+            "label": "/",
+            "value": "/",
+            "name": "divide",
             "type": "operator",
             "icon": true,
-            "class": "fas fa-backspace",
-            "function": "backspace",
-            "keycode": "Backspace"
-
+            "class": "fas fa-divide",
+            "function": false,
+            "keycode": "NumpadDivide"
         },
         {
             "label": "7",
@@ -171,7 +210,8 @@
             "icon": false,
             "class": null,
             "function": false,
-            "keycode": "Numpad0"
+            "keycode": "Numpad0",
+            "grid-column": "1 / 3"
         },
         {
             "label": ".",
@@ -184,17 +224,6 @@
             "keycode": "NumpadDecimal"
         },
         {
-            "label": "/",
-            "value": "/",
-            "name": "divide",
-            "type": "operator",
-            "icon": true,
-            "class": "fas fa-divide",
-            "function": false,
-            "keycode": "NumpadDivide"
-
-        },
-        {
             "label": "=",
             "value": "=",
             "name": "equals",
@@ -204,8 +233,6 @@
             "function": false,
             "keycode": "NumpadEnter"
         }
-
-
     ],
     "name": "calculator"
 }

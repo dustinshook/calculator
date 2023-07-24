@@ -37,13 +37,22 @@ body {
     border-radius: 0.3em;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    min-height: 90px;
+    min-height: 130px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-end;
-    font-size: 2rem;
+}
+
+.display-text {
+    font-size: 3rem;
     color: #C8FCEA;
+}
+
+.display-subtext {
+    font-size: 1rem;
+    color: #C8FCEA;
+    opacity: 0.5;
 }
 
 .calc-button {
@@ -60,6 +69,14 @@ body {
     align-items: center;
     justify-content: center;
     user-select: none;
+}
+
+.calc-button.operator {
+    background: #013C42;
+}
+
+.calc-button.spec {
+    background: #513E4E;
 }
 
 .calc-button:hover {

@@ -10,16 +10,32 @@ class Calculator {
         display.classList.add('display');
         display.id = 'calc-display';
 
+        const displayText = document.createElement('span');
+        displayText.classList.add('display-text');
+        displayText.id = 'calc-display-text';
+
+        display.appendChild(displayText);
+
+        const displaySubText = document.createElement('span');
+        displaySubText.classList.add('display-subtext');
+        displaySubText.id = 'calc-display-subtext';
+
+        display.appendChild(displaySubText);
+
         this.container.appendChild(display);
         this.display = display;
+        this.displayText = displayText;
+        this.displaySubText = displaySubText;
     }
 
     renderButtons() {
         this.config.buttons.forEach(button => {
             const calc_button = document.createElement('div');
             calc_button.classList.add('calc-button');
+            calc_button.classList.add(button.type);
             calc_button.dataset.operator = button.value;
             calc_button.dataset.key = button.keycode;
+            calc_button.dataset.function = button.function;
             
             if (button.icon) {
                 const icon = document.createElement('i');
@@ -28,7 +44,9 @@ class Calculator {
             } else {
                 calc_button.textContent = button.value;
             }
-        
+
+            if (button['grid-column']) calc_button.style.gridColumn = button['grid-column'];
+
             calc_button.addEventListener('click', (event) => {
                 if (button.function) {
                     this[button.function]();
@@ -63,28 +81,36 @@ class Calculator {
         return y => x / y;
     }
 
+    round(num, places) {
+        const floatVal = parseFloat(num);
+        return Math.round(floatVal * Math.pow(10, places)) / Math.pow(10, places);
+    }
+
     backspace() {
-        this.display.textContent = this.display.textContent.slice(0, -1);
+        this.displayText.textContent = (this.lastClicked === "operator") ? this.displayText.textContent : this.displayText.textContent.slice(0, -1);
     }
 
     posNeg() {
-        this.display.textContent = parseFloat(this.display.textContent) * -1;
+        this.displayText.textContent = parseFloat(this.displayText.textContent) * -1;
     }
 
     percent() {
-        this.display.textContent = parseFloat(this.display.textContent) / 100;
+        this.displayText.textContent = parseFloat(this.displayText.textContent) / 100;
     }
 
     clear() {
-        this.display.textContent = '';
+        this.displayText.textContent = '';
+        this.displaySubText.textContent = '';
         this.currentOperation = null;
     }
 
     operate(operator, num) {
+        this.displaySubText.textContent = `${num} ${operator}`;
+
         switch(operator) {
-            case '+':
+            case '+': 
                 return this.add(num);
-            case '-':
+            case '-': 
                 return this.subtract(num);
             case '*':
                 return this.multiply(num);
@@ -97,28 +123,32 @@ class Calculator {
 
     updateDisplay(value) {
         if (!['+', '-', '*', '/', '='].includes(value)) {
-            this.lastClicked = "number"
-           if (typeof this.currentOperation === 'function' && this.lastClicked === "operator") {
-                this.display.textContent = value; 
+            if (this.lastClicked === "operator") {
+                this.displayText.textContent = value;
+                this.displaySubText.textContent.includes('=') ? this.displaySubText.textContent = '' : this.displaySubText.textContent;
             } else {
-                this.display.textContent += value;
+                this.displayText.textContent += value;
             }
-            
+
+            this.lastClicked = "number";
         } else {
-            this.lastClicked = "operator"
-            if (typeof this.currentOperation === 'function') {
-                this.display.textContent = this.currentOperation(parseFloat(this.display.textContent));
+            
+            if (typeof this.currentOperation === 'function' && this.displayText.textContent && this.lastClicked === "number") {
 
                 if (value === '=') {
-                    this.currentOperation = null;
-                } else {
-                    this.currentOperation = this.operate(value, parseFloat(this.display.textContent));
+                    this.displaySubText.textContent = `${this.displaySubText.textContent} ${this.displayText.textContent} ${value}`
                 }
 
+                this.displayText.textContent = this.round(this.currentOperation(parseFloat(this.displayText.textContent)), 4);
+                this.currentOperation = (value === '=') ? null : this.operate(value, parseFloat(this.displayText.textContent));
+
+            } else if (this.displayText.textContent) {
+                this.currentOperation = this.operate(value, parseFloat(this.displayText.textContent));
             } else {
-                this.currentOperation = this.operate(value, parseFloat(this.display.textContent));
-                this.display.textContent = '';
+                this.currentOperation = null;
             }
+
+            this.lastClicked = "operator";
         }
     }
 
@@ -130,8 +160,10 @@ class Calculator {
     initKeyPress() {
         document.addEventListener('keydown', (event) => {
             const button = document.querySelector(`[data-key="${event.code}"]`);
-            if (button) {
+            if (button.dataset.function == "false") {
                 this.buttonClick(button);
+            } else {
+                this[button.dataset.function]();
             }
         });
     }
