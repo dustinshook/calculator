@@ -19,6 +19,7 @@ class Calculator {
             const calc_button = document.createElement('div');
             calc_button.classList.add('calc-button');
             calc_button.dataset.operator = button.value;
+            calc_button.dataset.key = button.keycode;
             
             if (button.icon) {
                 const icon = document.createElement('i');
@@ -43,6 +44,7 @@ class Calculator {
     init() {
         this.renderDisplay();
         this.renderButtons();
+        this.initKeyPress();
     }
 
     add(x) {
@@ -95,10 +97,15 @@ class Calculator {
 
     updateDisplay(value) {
         if (!['+', '-', '*', '/', '='].includes(value)) {
-
-            this.display.textContent = typeof this.currentOperation === 'function' ? value : this.display.textContent += value;
+            this.lastClicked = "number"
+           if (typeof this.currentOperation === 'function' && this.lastClicked === "operator") {
+                this.display.textContent = value; 
+            } else {
+                this.display.textContent += value;
+            }
             
         } else {
+            this.lastClicked = "operator"
             if (typeof this.currentOperation === 'function') {
                 this.display.textContent = this.currentOperation(parseFloat(this.display.textContent));
 
@@ -118,6 +125,15 @@ class Calculator {
     buttonClick(button) {
         const buttonValue = button.dataset.operator;
         this.updateDisplay(buttonValue);
+    }
+
+    initKeyPress() {
+        document.addEventListener('keydown', (event) => {
+            const button = document.querySelector(`[data-key="${event.code}"]`);
+            if (button) {
+                this.buttonClick(button);
+            }
+        });
     }
 
 }

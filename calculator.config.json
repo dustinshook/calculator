@@ -7,7 +7,8 @@
             "type": "operator",
             "icon": false,
             "class": null,
-            "function": "clear"
+            "function": "clear",
+            "keycode": "Delete"
         },
         {
             "label": "+/-",
@@ -16,7 +17,8 @@
             "type": "operator",
             "icon": true,
             "class": "fas fa-plus-minus",
-            "function": "posNeg"
+            "function": "posNeg",
+            "keycode": "AltRight"
         },
         {
             "label": "%",
@@ -25,7 +27,9 @@
             "type": "operator",
             "icon": true,
             "class": "fas fa-percent",
-            "function": "percent"
+            "function": "percent",
+            "keycode": ""
+
         },
         {
             "label": "CE",
@@ -34,7 +38,9 @@
             "type": "operator",
             "icon": true,
             "class": "fas fa-backspace",
-            "function": "backspace"
+            "function": "backspace",
+            "keycode": "Backspace"
+
         },
         {
             "label": "7",
@@ -43,7 +49,9 @@
             "type": "number",
             "icon": false,
             "class": null,
-            "function": false
+            "function": false,
+            "keycode": "Numpad7"
+
         },
         {
             "label": "8",
@@ -52,7 +60,8 @@
             "type": "number",
             "icon": false,
             "class": null,
-            "function": false
+            "function": false,
+            "keycode": "Numpad8"
         },
         {
             "label": "9",
@@ -61,7 +70,8 @@
             "type": "number",
             "icon": false,
             "class": null,
-            "function": false
+            "function": false,
+            "keycode": "Numpad9"
         },
         {
             "label": "x",
@@ -70,7 +80,8 @@
             "type": "operator",
             "icon": true,
             "class": "fas fa-xmark",
-            "function": false
+            "function": false,
+            "keycode": "NumpadMultiply"
         },
         {
             "label": "4",
@@ -79,7 +90,8 @@
             "type": "number",
             "icon": false,
             "class": null,
-            "function": false
+            "function": false,
+            "keycode": "Numpad4"
         },
         {
             "label": "5",
@@ -88,7 +100,8 @@
             "type": "number",
             "icon": false,
             "class": null,
-            "function": false
+            "function": false,
+            "keycode": "Numpad5"
         },
         {
             "label": "6",
@@ -97,7 +110,8 @@
             "type": "number",
             "icon": false,
             "class": null,
-            "function": false
+            "function": false,
+            "keycode": "Numpad6"
         },
         {
             "label": "-",
@@ -106,7 +120,8 @@
             "type": "operator",
             "icon": true,
             "class": "fas fa-minus",
-            "function": false
+            "function": false,
+            "keycode": "NumpadSubtract"
         },
         {
             "label": "1",
@@ -115,7 +130,8 @@
             "type": "number",
             "icon": false,
             "class": null,
-            "function": false
+            "function": false,
+            "keycode": "Numpad1"
         },
         {
             "label": "2",
@@ -124,7 +140,8 @@
             "type": "number",
             "icon": false,
             "class": null,
-            "function": false
+            "function": false,
+            "keycode": "Numpad2"
         },
         {
             "label": "3",
@@ -133,7 +150,8 @@
             "type": "number",
             "icon": false,
             "class": null,
-            "function": false
+            "function": false,
+            "keycode": "Numpad3"
         },
         {
             "label": "+",
@@ -142,7 +160,8 @@
             "type": "operator",
             "icon": true,
             "class": "fas fa-plus",
-            "function": false
+            "function": false,
+            "keycode": "NumpadAdd"
         },
         {
             "label": "0",
@@ -151,7 +170,8 @@
             "type": "number",
             "icon": false,
             "class": null,
-            "function": false
+            "function": false,
+            "keycode": "Numpad0"
         },
         {
             "label": ".",
@@ -160,7 +180,8 @@
             "type": "number",
             "icon": false,
             "class": null,
-            "function": false
+            "function": false,
+            "keycode": "NumpadDecimal"
         },
         {
             "label": "/",
@@ -169,7 +190,9 @@
             "type": "operator",
             "icon": true,
             "class": "fas fa-divide",
-            "function": false
+            "function": false,
+            "keycode": "NumpadDivide"
+
         },
         {
             "label": "=",
@@ -178,7 +201,8 @@
             "type": "operator",
             "icon": true,
             "class": "fas fa-equals",
-            "function": false
+            "function": false,
+            "keycode": "NumpadEnter"
         }
 
 
