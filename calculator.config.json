@@ -1,13 +1,13 @@
 {
     "buttons": [
         {
-            "label": "source",
-            "value": "source",
-            "name": "source code",
-            "type": "spec",
+            "label": "dark-mode",
+            "value": "dark-mode",
+            "name": "dark",
+            "type": "source",
             "icon": true,
-            "class": "fa-brands fa-github",
-            "function": "false",
+            "class": "fas fa-moon",
+            "function": "toggleTheme",
             "keycode": ""
         },
         {
@@ -44,7 +44,7 @@
             "label": "sqrt",
             "value": "sqrt",
             "name": "squareroot",
-            "type": "spec",
+            "type": "transform",
             "icon": true,
             "class": "fas fa-square-root-variable",
             "function": false,
@@ -54,7 +54,7 @@
             "label": "+/-",
             "value": "pn",
             "name": "plusminus",
-            "type": "operator",
+            "type": "transform",
             "icon": true,
             "class": "fas fa-plus-minus",
             "function": "posNeg",
@@ -64,7 +64,7 @@
             "label": "%",
             "value": "pct",
             "name": "percent",
-            "type": "operator",
+            "type": "transform",
             "icon": true,
             "class": "fas fa-percent",
             "function": "percent",

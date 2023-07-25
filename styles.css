@@ -79,6 +79,14 @@ body {
     background: #513E4E;
 }
 
+.calc-button.source {
+    background: #353442;
+}
+
+.calc-button.transform {
+    background: #3B3D42
+}
+
 .calc-button:hover {
     background: #518071;
 }
@@ -108,4 +116,63 @@ body {
 
 
 
+}
+
+body.light-mode {
+    background-image: linear-gradient(to right bottom, #E0E0E0, #fff);
+}
+
+body.light-mode .calculator-wrapper {
+    background: #fff;
+    border: 3px solid #374B43;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+body.light-mode .display {
+    background: #fff;
+    border-radius: 0.3em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 3px solid #374B43;
+}
+
+body.light-mode .calc-button {
+    color: #202020;
+    border: 1px solid #202020;
+    background: #fff;
+}
+
+body.light-mode .calc-button.operator {
+    background: #E0E0E0;
+}
+
+body.light-mode .calc-button.spec {
+    background: #E7EFFF;
+}
+
+body.light-mode .calc-button.source {
+    background: #E0E0E0;
+}
+
+body.light-mode .calc-button.transform {
+    background: #D9EDDF;
+}
+
+body.light-mode .calc-button:hover {
+    background: #E0E0E0;
+}
+
+body.light-mode .calc-button:active {
+    background: #00C896;
+}
+
+body.light-mode .display-text {
+    color: #202020;
+}
+
+body.light-mode .display-subtext {
+    color: #202020;
+}
+
+body.light-mode .calc-button:active {
+    background: #00C896;
 }
