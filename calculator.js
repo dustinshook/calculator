@@ -121,14 +121,16 @@ class Calculator {
         this.displayText.textContent = '';
         this.equationText.textContent = '';
         this.currentOperation = null;
+        this.resetFontSize();
     }
 
     clearEntry() {
         this.displayText.textContent = '';
+        this.resetFontSize();
     }
 
     catchInfinity(text) {
-        return text.toString().includes('Infinity') ? 'Nice Try!' : text;
+        return text.toString().includes('Infinity') ? 'Nice Try Human!' : text;
     }
 
     operate(operator, num) {
@@ -158,6 +160,8 @@ class Calculator {
             }
 
             this.lastClicked = "number";
+
+            this.adjustFontSize();
         } else {
             
             if (typeof this.currentOperation === 'function' && this.displayText.textContent && this.lastClicked === "number") {
@@ -169,7 +173,10 @@ class Calculator {
                 this.displayText.textContent = this.catchInfinity(this.round(this.currentOperation(parseFloat(this.displayText.textContent)), 4));
                 this.currentOperation = (value === '=') ? null : this.operate(value, parseFloat(this.displayText.textContent));
 
-                if (this.displayText.textContent === 'Nice Try!') {
+                this.adjustFontSize();
+
+                if (this.displayText.textContent === 'Nice Try Human!') {
+                    this.adjustFontSize();
                     setTimeout(this.clear.bind(this), 2500);
                 }
 
@@ -197,6 +204,20 @@ class Calculator {
                 this[button.dataset.function]();
             }
         });
+    }
+
+    adjustFontSize() {
+        const computedStyle = window.getComputedStyle(this.displayText);
+        let fontSize = parseInt(computedStyle.getPropertyValue('font-size'));
+
+        while (this.displayText.scrollWidth > this.display.clientWidth - 25) {
+            fontSize--;
+            this.displayText.style.fontSize = `${fontSize}px`;
+        }
+    }
+
+    resetFontSize() {
+        this.displayText.style.fontSize = '3rem';
     }
 
 }
