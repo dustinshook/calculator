@@ -113,10 +113,9 @@ body {
         font-size: 3rem;
         min-height: 105px
     }
-
-
-
 }
+
+/* theme */
 
 body.light-mode {
     background-image: linear-gradient(to right bottom, #E0E0E0, #fff);
@@ -171,8 +170,4 @@ body.light-mode .display-text {
 
 body.light-mode .display-subtext {
     color: #202020;
-}
-
-body.light-mode .calc-button:active {
-    background: #00C896;
 }

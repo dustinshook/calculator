@@ -16,16 +16,16 @@ class Calculator {
 
         display.appendChild(displayText);
 
-        const displaySubText = document.createElement('span');
-        displaySubText.classList.add('display-subtext');
-        displaySubText.id = 'calc-display-subtext';
+        const equationText = document.createElement('span');
+        equationText.classList.add('display-subtext');
+        equationText.id = 'calc-display-subtext';
 
-        display.appendChild(displaySubText);
+        display.appendChild(equationText);
 
         this.container.appendChild(display);
         this.display = display;
         this.displayText = displayText;
-        this.displaySubText = displaySubText;
+        this.equationText = equationText;
     }
 
     renderButtons() {
@@ -40,6 +40,7 @@ class Calculator {
             if (button.icon) {
                 const icon = document.createElement('i');
                 icon.classList = button.class;
+                icon.id = button.label;
                 calc_button.appendChild(icon);
             } else {
                 calc_button.textContent = button.value;
@@ -62,6 +63,9 @@ class Calculator {
     toggleTheme() {
         const body = document.querySelector('body');
         body.classList.toggle('light-mode');
+
+        const icon = document.getElementById('dark-mode');
+        icon.classList = body.classList.contains('light-mode') ? 'fas fa-moon' : 'fas fa-sun';
     }
 
     init() {
@@ -103,14 +107,32 @@ class Calculator {
         this.displayText.textContent = parseFloat(this.displayText.textContent) / 100;
     }
 
+    squareRoot() {
+        this.displayText.textContent = this.round(Math.sqrt(parseFloat(this.displayText.textContent)), 4);
+    }
+
+    addDecimal() {
+        if (!this.displayText.textContent.includes('.')) {
+            this.displayText.textContent += '.';
+        }
+    }
+
     clear() {
         this.displayText.textContent = '';
-        this.displaySubText.textContent = '';
+        this.equationText.textContent = '';
         this.currentOperation = null;
     }
 
+    clearEntry() {
+        this.displayText.textContent = '';
+    }
+
+    catchInfinity(text) {
+        return text.toString().includes('Infinity') ? 'Nice Try!' : text;
+    }
+
     operate(operator, num) {
-        this.displaySubText.textContent = `${num} ${operator}`;
+        this.equationText.textContent = `${num} ${operator}`;
 
         switch(operator) {
             case '+': 
@@ -130,7 +152,7 @@ class Calculator {
         if (!['+', '-', '*', '/', '='].includes(value)) {
             if (this.lastClicked === "operator") {
                 this.displayText.textContent = value;
-                this.displaySubText.textContent.includes('=') ? this.displaySubText.textContent = '' : this.displaySubText.textContent;
+                this.equationText.textContent.includes('=') ? this.equationText.textContent = '' : this.equationText.textContent;
             } else {
                 this.displayText.textContent += value;
             }
@@ -141,11 +163,15 @@ class Calculator {
             if (typeof this.currentOperation === 'function' && this.displayText.textContent && this.lastClicked === "number") {
 
                 if (value === '=') {
-                    this.displaySubText.textContent = `${this.displaySubText.textContent} ${this.displayText.textContent} ${value}`
+                    this.equationText.textContent = `${this.equationText.textContent} ${this.displayText.textContent} ${value}`
                 }
 
-                this.displayText.textContent = this.round(this.currentOperation(parseFloat(this.displayText.textContent)), 4);
+                this.displayText.textContent = this.catchInfinity(this.round(this.currentOperation(parseFloat(this.displayText.textContent)), 4));
                 this.currentOperation = (value === '=') ? null : this.operate(value, parseFloat(this.displayText.textContent));
+
+                if (this.displayText.textContent === 'Nice Try!') {
+                    setTimeout(this.clear.bind(this), 2500);
+                }
 
             } else if (this.displayText.textContent) {
                 this.currentOperation = this.operate(value, parseFloat(this.displayText.textContent));

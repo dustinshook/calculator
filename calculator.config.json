@@ -6,7 +6,7 @@
             "name": "dark",
             "type": "source",
             "icon": true,
-            "class": "fas fa-moon",
+            "class": "fas fa-sun",
             "function": "toggleTheme",
             "keycode": ""
         },
@@ -27,7 +27,7 @@
             "type": "spec",
             "icon": false,
             "class": null,
-            "function": false,
+            "function": "clearEntry",
             "keycode": "Escape"
         },
         {
@@ -47,7 +47,7 @@
             "type": "transform",
             "icon": true,
             "class": "fas fa-square-root-variable",
-            "function": false,
+            "function": "squareRoot",
             "keycode": ""
         },
         {
@@ -220,7 +220,7 @@
             "type": "number",
             "icon": false,
             "class": null,
-            "function": false,
+            "function": "addDecimal",
             "keycode": "NumpadDecimal"
         },
         {
